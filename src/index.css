@@ -37,6 +37,10 @@ main {
   display: none;
 }
 
+.single-day-weather-condition-container.show {
+  display: block;
+}
+
 .high-temp-icon {
   transform: rotate(180deg);
 }

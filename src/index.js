@@ -64,6 +64,14 @@ class App extends React.Component {
         description: response.weather[0].description,
         condition: response.weather[0].main
       });
+      document
+        .querySelector(".single-day-weather-condition-container")
+        .classList.add("show");
+    } else {
+      // Hide the section if something went wrong with API call
+      document
+        .querySelector(".single-day-weather-condition-container")
+        .classList.remove("show");
     }
   };
 
