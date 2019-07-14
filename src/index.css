@@ -33,6 +33,10 @@ main {
   height: 50px;
 }
 
+.single-day-weather-condition-container {
+  display: none;
+}
+
 .high-temp-icon {
   transform: rotate(180deg);
 }

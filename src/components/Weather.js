@@ -3,7 +3,7 @@ import sunIcon from "../icons/sun.svg";
 import downArrow from "../icons/down-arrow.svg";
 const Weather = props => {
   return (
-    <div className="weather-condition-container">
+    <div className="single-day-weather-condition-container">
       <p>
         {props.city}, {props.country}
       </p>

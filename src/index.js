@@ -42,22 +42,29 @@ class App extends React.Component {
 
     const api_call = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${zip}&appid=${WEATHER_API_KEY}`
-    );
-
-    const response = await api_call.json();
-
-    console.log(response);
-
-    this.setState({
-      currentTemp: convertTemp(response.main.temp),
-      highTemp: convertTemp(response.main.temp_max),
-      lowTemp: convertTemp(response.main.temp_min),
-      humidity: response.main.humidity,
-      city: response.name,
-      country: response.sys.country,
-      description: response.weather[0].description,
-      condition: response.weather[0].main
+    ).catch(err => {
+      console.log(err);
     });
+
+    const response = await api_call.json().catch(err => {
+      console.log(err);
+    });
+
+    // console.log(response);
+    // Only run this code if API call worked and conversion to json successful
+    if (api_call.ok === true) {
+      // console.log("were in here");
+      this.setState({
+        currentTemp: convertTemp(response.main.temp),
+        highTemp: convertTemp(response.main.temp_max),
+        lowTemp: convertTemp(response.main.temp_min),
+        humidity: response.main.humidity,
+        city: response.name,
+        country: response.sys.country,
+        description: response.weather[0].description,
+        condition: response.weather[0].main
+      });
+    }
   };
 
   // Action to take when the user clicks the submit button
