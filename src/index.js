@@ -2,24 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom";
 // import LocationSearchInput from "./components/LocationSearchInput";
 import "./index.css";
+import Weather from "./components/Weather";
 // import App from "./App";
 // import * as serviceWorker from "./serviceWorker";
-import sunIcon from "./icons/sun.svg";
-import downArrow from "./icons/down-arrow.svg";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       value: "",
-      currentTemp: undefined,
-      highTemp: undefined,
-      lowTemp: undefined,
-      city: undefined,
-      country: undefined,
-      description: undefined,
-      condition: undefined,
-      humidity: undefined
+      currentTemp: 0,
+      highTemp: 0,
+      lowTemp: 0,
+      city: "",
+      country: "",
+      description: "",
+      condition: "",
+      humidity: 0
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -69,38 +68,37 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="background">
-        <p>Please enter in your location (city/state or zip code)</p>
-        {/* This gets the location from the user */}
+      <main>
+        <div className="main-container">
+          <div className="form-input-container">
+            <p>Please enter in your location (city/state or zip code)</p>
+            {/* This gets the location from the user */}
 
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            <input
-              type="text"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <input type="submit" value="Submit" />
+            </form>
 
-        {/* <LocationSearchInput /> */}
-
-        <p>
-          {this.state.city}, {this.state.country}
-        </p>
-        <p>Today</p>
-        <img id="weather-condition-icon" src={sunIcon} alt="weather icon" />
-        <p>Current: {this.state.currentTemp}&deg;</p>
-        <div className="high-low-container">
-          <img className="high-temp-icon" src={downArrow} alt="up arrow" />
-          <span>{this.state.highTemp}&deg;</span>
-
-          <img src={downArrow} alt="down arrow" />
-          <span>{this.state.lowTemp}&deg;</span>
+            {/* <LocationSearchInput /> */}
+          </div>
+          <Weather
+            currentTemp={this.state.currentTemp}
+            highTemp={this.state.highTemp}
+            lowTemp={this.state.lowTemp}
+            humidity={this.state.humidity}
+            city={this.state.city}
+            country={this.state.country}
+            description={this.state.description}
+            condition={this.state.condition}
+          />
         </div>
-        <p>{this.state.description}</p>
-      </div>
+      </main>
     );
   }
 }
