@@ -67,11 +67,15 @@ class App extends React.Component {
       document
         .querySelector(".single-day-weather-condition-container")
         .classList.add("show");
+      document.querySelector(".form-input-container").classList.add("move-up");
     } else {
       // Hide the section if something went wrong with API call
       document
         .querySelector(".single-day-weather-condition-container")
         .classList.remove("show");
+      document
+        .querySelector(".form-input-container")
+        .classList.remove("move-up");
     }
   };
 
