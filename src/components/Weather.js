@@ -75,7 +75,7 @@ const Weather = props => {
       if (key.description === props.description) {
         if (key.dayAndNight) {
           iconFilename =
-            props.hours > 19 || props.hours < 5
+            props.hours >= 19 || props.hours < 5
               ? key.filenameNight
               : key.filenameDay;
         } else {

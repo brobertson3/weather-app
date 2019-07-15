@@ -19,7 +19,7 @@ class App extends React.Component {
       description: "",
       condition: "",
       humidity: 0,
-      hours: 0
+      hours: new Date().getHours()
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -87,9 +87,14 @@ class App extends React.Component {
     event.preventDefault();
   }
 
+  getTimeOfDay = hours => {
+    console.log(hours);
+    return hours < 5 || hours >= 19 ? "night" : "day";
+  };
+
   render() {
     return (
-      <main>
+      <main className={this.getTimeOfDay(this.state.hours)}>
         <div className="main-container">
           <div className="form-input-container">
             <p>Please enter in your location (city/state or zip code)</p>
