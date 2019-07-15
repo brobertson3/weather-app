@@ -50,7 +50,7 @@ const Weather = props => {
             {props.lowTemp}&deg;
           </span>
         </div>
-        <p>{props.description}</p>
+        <p className="weather-description">{props.description}</p>
       </div>
     </div>
   );
