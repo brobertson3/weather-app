@@ -18,7 +18,8 @@ class App extends React.Component {
       country: "",
       description: "",
       condition: "",
-      humidity: 0
+      humidity: 0,
+      hours: 0
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -62,7 +63,8 @@ class App extends React.Component {
         city: response.name,
         country: response.sys.country,
         description: response.weather[0].description,
-        condition: response.weather[0].main
+        condition: response.weather[0].main,
+        hours: new Date().getHours()
       });
       document
         .querySelector(".single-day-weather-condition-container")
@@ -115,6 +117,7 @@ class App extends React.Component {
             country={this.state.country}
             description={this.state.description}
             condition={this.state.condition}
+            hours={this.state.hours}
           />
         </div>
       </main>
