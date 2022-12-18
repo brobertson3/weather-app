@@ -42,7 +42,7 @@ class App extends React.Component {
     };
 
     const api_call = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${zip}&appid=${WEATHER_API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${zip}&appid=${WEATHER_API_KEY}`
     ).catch(err => {
       console.log(err);
     });
@@ -97,7 +97,7 @@ class App extends React.Component {
       <main className={this.getTimeOfDay(this.state.hours)}>
         <div className="main-container">
           <div className="form-input-container">
-            <p>Please enter in your location (city/state or zip code)</p>
+            <p>Please enter in your location (zip code only)</p>
             {/* This gets the location from the user */}
 
             <form onSubmit={this.handleSubmit}>
